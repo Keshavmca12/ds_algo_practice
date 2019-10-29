@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+var prev_id;
+
+document.getElementById('main').scroll(function(){
+    
+    var element_height = 400;
+    var offset = $('content').offset();
+    var positive =  Math.abs(offset.right)
+    var divided = positive / element_height;
+    var round = Math.round(divided);
+
+    var current_element = document.getElementById('content').children().eq(round);
+    var id = current_element.attr('id');
+		alert("11"+id);
+    if(id != prev_id){
+    prev_id = id;
+    alert(id);
+    }
+
+});
+</script>
+<style type="text/css">
+#main {
+    border: 1px solid black;
+    width: 400px;
+    height: 400px;   
+    background-color:#cdcdcd;
+    overflow: auto;
+}
+
+#content {
+    width: 400px ;
+    height: 400px;
+    background-color: red; 
+}
+
+.vis {
+    width: 400px;
+    height: 200px;
+    border: 1px solid black;
+    display: inline-block;
+}
+</style>
+</head>
+<body>
+<div id="main">
+    <div id="content">
+        <div id="one" class="vis">1</div>
+        <div id="two" class="vis">2</div>
+        <div id="three" class="vis">3</div>
+        <div id="four" class="vis">4</div>
+        <div id="five" class="vis">5</div>
+        <div id="six" class="vis">6</div>
+        <div id="seven" class="vis">7</div>
+        <div id="eight" class="vis">8</div>
+    </div>
+</div>
+</body>
+</html>
