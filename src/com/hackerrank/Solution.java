@@ -1,8 +1,15 @@
 package com.hackerrank;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * @Autor : Keshav Kumar
@@ -44,32 +51,31 @@ public class Solution {
 	}
 
 	static String timeConversion(String s) {
-		
-		String result = s.substring(0, s.length() -2);
-		if(s.substring(s.length()-2).equals("PM")){
+
+		String result = s.substring(0, s.length() - 2);
+		if (s.substring(s.length() - 2).equals("PM")) {
 			String[] arr = result.split(":");
-			if(!arr[0].equals("12")){
-			int num  = Integer.parseInt(arr[0]) +12;
-			result = result.replaceFirst(arr[0], String.valueOf(num));
+			if (!arr[0].equals("12")) {
+				int num = Integer.parseInt(arr[0]) + 12;
+				result = result.replaceFirst(arr[0], String.valueOf(num));
 			}
-		}else if(s.substring(s.length()-2).equals("AM")){
+		} else if (s.substring(s.length() - 2).equals("AM")) {
 			String[] arr = result.split(":");
-			if(arr[0].equals("12")){
-			result = result.replaceFirst(arr[0], "00");
+			if (arr[0].equals("12")) {
+				result = result.replaceFirst(arr[0], "00");
 			}
 		}
-		
+
 		return result;
 
 	}
-	
-	
+
 	static int[] circularArrayRotation(int[] a, int k, int[] queries) {
 		int[] result = new int[queries.length];
 		for (int i = 0; i < k; i++) {
-			int temp = a[a.length-1];
-			for (int j = a.length-1; j > 0; j--) {
-					a[j] = a[j-1];
+			int temp = a[a.length - 1];
+			for (int j = a.length - 1; j > 0; j--) {
+				a[j] = a[j - 1];
 			}
 			a[0] = temp;
 		}
@@ -77,6 +83,37 @@ public class Solution {
 			result[i] = a[queries[i]];
 		}
 		return result;
+	}
+
+	static void extraLongFactorials(int n) {
+		BigInteger result = BigInteger.valueOf(n);
+		for (int i = n - 1; i > 1; i--) {
+			result = result.multiply(BigInteger.valueOf(i));
+		}
+		System.out.println(result);
+	}
+
+	public static int nonDivisibleSubset(int k, List<Integer> s) {
+		Set<Integer> resultSet = new HashSet<>();
+		Map<Integer, Boolean> map = new HashMap<>();
+        for (int i = 0; i < s.size() - 1; i++) {
+            for (int j = i+1; j < s.size(); j++) {
+            	 System.out.println("j : "+ s.get(i)+ "   j+1  " +s.get(j));
+            	int sum  = s.get(i)+ s.get(j);
+            	System.out.println("sum "+ sum + " sum%k "+ sum  % k);
+                if((sum  % k) == 0){
+                    	map.put(s.get(i), true);
+                    	map.put(s.get(j), true);
+                }
+                System.out.println(resultSet);
+            }
+        }
+        for (Map.Entry<Integer, Boolean> entry : map.entrySet()) {
+			if(entry.getValue() == null){
+				resultSet.add(entry.getKey());
+			}
+		}
+        return resultSet.size();
 	}
 
 	private static final Scanner scanner = new Scanner(System.in);
@@ -98,10 +135,18 @@ public class Solution {
 		// plusMinus();
 
 		// scanner.close();
-		
-		//System.out.println(Solution.timeConversion("12:05:45AM"));
-		 int[] arr = {1, 2, 3};
-		 int[] arr1 = {0,1,2};
-		System.out.println(Arrays.toString(Solution.circularArrayRotation(arr, 2, arr1)));
+
+		// System.out.println(Solution.timeConversion("12:05:45AM"));
+		int[] arr = { 1, 2, 3 };
+		int[] arr1 = { 0, 1, 2 };
+		List<Integer> list =new ArrayList<Integer>();
+		list.add(1);
+		list.add(7);
+		list.add(2);
+		list.add(4);
+		nonDivisibleSubset(3, list);
+		//extraLongFactorials(25);
+		// System.out.println(Arrays.toString(Solution.circularArrayRotation(arr,
+		// 2, arr1)));
 	}
 }
