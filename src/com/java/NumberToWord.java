@@ -5,7 +5,7 @@ package com.java;
  * @Date : 26-Dec-2019
  */
 
-public class NumberToWord {
+public class NumberToWord implements Cloneable{
 	static void convert_to_words(char[] num) 
 	{ 
 	    // Get number of digits 
@@ -131,6 +131,11 @@ public class NumberToWord {
 	convert_to_words("9".toCharArray()); 
 	convert_to_words("2100".toCharArray()); 
 	} 
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
 }
 
 

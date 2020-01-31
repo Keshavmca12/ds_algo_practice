@@ -6,7 +6,7 @@ package com.java;
  */
 
 public class NullFirstCheck {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws CloneNotSupportedException {
 		Integer  x= null;
 		
 		if(null == x){
@@ -16,5 +16,12 @@ public class NullFirstCheck {
 		if(x == null){
 			System.out.println(x);
 		}
+		
+		NumberToWord numberToWord = new NumberToWord();
+		System.out.println(numberToWord);
+		
+		NumberToWord numberToWordClone = (NumberToWord) numberToWord.clone();
+		System.out.println(numberToWord);
 	}
+	
 }
