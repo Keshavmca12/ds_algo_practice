@@ -1,4 +1,4 @@
-package com.java8;
+package com.java8.functional.interfacePractice;
 
 import java.util.ArrayList;
 import java.util.List;

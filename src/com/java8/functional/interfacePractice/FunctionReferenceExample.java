@@ -1,4 +1,4 @@
-package com.java8;
+package com.java8.functional.interfacePractice;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
