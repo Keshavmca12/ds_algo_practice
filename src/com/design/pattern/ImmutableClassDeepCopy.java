@@ -29,6 +29,8 @@ public final class ImmutableClassDeepCopy {
 
 	/**
 	 * Accessor function for mutable objects
+	 * 
+	 * Clone will stop modification through  accessor method access
 	 */
 	public HashMap<String, String> getTestMap() {
 		return (HashMap<String, String>) testMap.clone();
