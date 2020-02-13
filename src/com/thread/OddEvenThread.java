@@ -8,7 +8,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 }*/
 
-
 /**
  * @Autor : Keshav Kumar
  * @Date : 31-Dec-2019
@@ -29,10 +28,10 @@ public class OddEvenThread {
 		 */
 
 		Thread t1 = new Thread(new Print());
-		// t1.setName("Even");
+		t1.setName("Even");
 		t1.start();
 		Thread t2 = new Thread(new Print());
-		// t2.setName("Odd");
+		t2.setName("Odd");
 		t2.start();
 
 	}
@@ -46,18 +45,10 @@ class Print implements Runnable {
 	public void run() {
 		while (atomicNumber.get() < 10) {
 			synchronized (atomicNumber) {
-				if ((atomicNumber.get()
-						% 2 == 0) /*
-									 * && "Even".equals(Thread.currentThread().
-									 * getName())
-									 */) {
-					System.out.println("Even" + ":" + atomicNumber.getAndIncrement());
-				} else if ((atomicNumber.get()
-						% 2 != 0) /*
-									 * && "Odd".equals(Thread.currentThread().
-									 * getName())
-									 */) {
-					System.out.println("Odd" + ":" + atomicNumber.getAndIncrement());
+				if ((atomicNumber.get() % 2 == 0) && "Even".equals(Thread.currentThread().getName())) {
+					System.out.println(Thread.currentThread().getName()+ ":" + atomicNumber.getAndIncrement());
+				} else if ((atomicNumber.get() % 2 != 0) && "Odd".equals(Thread.currentThread().getName())) {
+					System.out.println(Thread.currentThread().getName() + " :: " + atomicNumber.getAndIncrement());
 				}
 			}
 		}
@@ -82,8 +73,7 @@ class PrintEvenThread extends Thread {
 	}
 }
 
-
-class PrintOddThreads implements Runnable{
+class PrintOddThreads implements Runnable {
 
 	private int i = 1;
 
@@ -98,6 +88,5 @@ class PrintOddThreads implements Runnable{
 			e.printStackTrace();
 		}
 	}
-	
-}
 
+}
