@@ -10,11 +10,20 @@ import com.node.BinaryTreeNode;
 public class LeftViewBST {
 	private static int maxLevel = 0;
 	public static void main(String[] args) {
-       BinaryTreeNode  node = new BinaryTreeNode(12); 
+      /* BinaryTreeNode  node = new BinaryTreeNode(12); 
         node.left = new BinaryTreeNode(10); 
         node.right = new BinaryTreeNode(30); 
         node.right.left = new BinaryTreeNode(25); 
-        node.right.right = new BinaryTreeNode(40); 
+        node.right.right = new BinaryTreeNode(40); */
+		
+		BinaryTreeNode node = new BinaryTreeNode(1); 
+        node.left = new BinaryTreeNode(2); 
+        node.right = new BinaryTreeNode(3); 
+        node.left.left = new BinaryTreeNode(4); 
+        node.left.right = new BinaryTreeNode(5); 
+        node.right.left = new BinaryTreeNode(6); 
+        node.right.right = new BinaryTreeNode(7); 
+        node.right.left.right = new BinaryTreeNode(8); 
         
         printLeftView(node, 1);
 	}

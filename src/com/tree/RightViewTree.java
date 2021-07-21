@@ -25,9 +25,12 @@ public class RightViewTree {
 	}
 	
 	private static void printRightView(BinaryTreeNode root, int currentLevel) {
+		
 		if (root == null) {
 			return;
 		}
+		
+		System.out.println("node " + root.data);
 		if(  maxLevel < currentLevel){
 			maxLevel = currentLevel;
 			System.out.print(root.data + "           ");
